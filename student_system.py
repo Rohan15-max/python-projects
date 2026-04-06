@@ -1,9 +1,9 @@
-print("📚 Student Management System")
+print("📚 Student Management System (PRO VERSION)")
 
 students = []
 
 while True:
-    print("\n--- MENU ---")
+    print("\n===== MENU =====")
     print("1. Add Student")
     print("2. View Students")
     print("3. Search Student")
@@ -12,48 +12,58 @@ while True:
 
     choice = input("Enter choice: ")
 
-    # Add student
+    # ADD STUDENT
     if choice == "1":
         name = input("Enter student name: ")
-        age = input("Enter student age: ")
+        age = input("Enter age: ")
+
+        # NEW FEATURE: marks
+        try:
+            marks = float(input("Enter marks (out of 100): "))
+        except:
+            print("❌ Invalid marks, set to 0")
+            marks = 0
 
         student = {
             "name": name,
-            "age": age
+            "age": age,
+            "marks": marks
         }
 
         students.append(student)
         print("✅ Student added successfully!")
 
-    # View students
+    # VIEW STUDENTS
     elif choice == "2":
         if len(students) == 0:
-            print("No students found.")
+            print("No students found ❌")
         else:
-            for i, s in enumerate(students):
-                print(i+1, s["name"], "-", s["age"])
+            print("\nName | Age | Marks")
+            print("---------------------")
+            for s in students:
+                print(s["name"], "|", s["age"], "|", s["marks"])
 
-    # Search student
+    # SEARCH
     elif choice == "3":
-        search = input("Enter name to search: ")
+        search = input("Enter name: ")
         found = False
 
         for s in students:
             if s["name"].lower() == search.lower():
-                print("Found:", s["name"], "-", s["age"])
+                print("Found →", s["name"], "| Age:", s["age"], "| Marks:", s["marks"])
                 found = True
                 break
 
         if not found:
             print("Student not found ❌")
 
-    # Delete student
+    # DELETE
     elif choice == "4":
-        delete_name = input("Enter name to delete: ")
+        name = input("Enter name to delete: ")
         removed = False
 
         for s in students:
-            if s["name"].lower() == delete_name.lower():
+            if s["name"].lower() == name.lower():
                 students.remove(s)
                 print("Deleted successfully 🗑️")
                 removed = True
@@ -62,9 +72,9 @@ while True:
         if not removed:
             print("Student not found ❌")
 
-    # Exit
+    # EXIT
     elif choice == "5":
-        print("Exiting system... Bye 👋")
+        print("Exiting... Bye 👋")
         break
 
     else:
