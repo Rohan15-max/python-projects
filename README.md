@@ -1,9 +1,10 @@
-# Simple Calculator
+# My Python Projects
 
-This is my first Python project.
+## Calculator
+Basic calculator project
 
-It performs basic operations like:
-- Addition
-- Subtraction
-- Multiplication
-- Division
+## Number Guessing Game
+Game using random numbers
+
+## Student Management System
+Adds, searches, deletes students
